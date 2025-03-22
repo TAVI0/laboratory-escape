@@ -19,6 +19,11 @@ config/icon="res://assets/icon.svg"
 
 GLOBAL="*res://scripts/global.gd"
 
+[display]
+
+mouse_cursor/custom_image="uid://dn7gj6gefj34v"
+mouse_cursor/custom_image_hotspot=Vector2(32, 32)
+
 [global_group]
 
 shot=""

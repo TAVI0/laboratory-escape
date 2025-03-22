@@ -6,15 +6,12 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_stwh0")]
-position = Vector2(534, 565)
-scale = Vector2(0.569598, 0.569598)
+position = Vector2(530, 402)
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-position = Vector2(820, 39)
-scale = Vector2(0.569598, 0.569598)
+position = Vector2(816, 37)
 script = ExtResource("2_cqova")
 
 [node name="EnemySpawner2" type="Node2D" parent="."]
-position = Vector2(247, 39)
-scale = Vector2(0.569598, 0.569598)
+position = Vector2(243, 37)
 script = ExtResource("2_cqova")

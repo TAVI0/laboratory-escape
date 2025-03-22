@@ -37,6 +37,9 @@ func _input(event):
 func shoot_ctrl() -> void:	
 	var shot_instance = shot.instantiate()
 	var mouse_pos = get_global_mouse_position()
+	var direction = (mouse_pos - position).normalized()
+
+	shot_instance.rotation = (-mouse_pos).angle()
 	shot_instance.start(position, mouse_pos)  # Llamamos a start() en la bala
 	get_parent().add_child(shot_instance)  # Agregamos el Shoot a la escena
 	#var shot_instance = shot.instantiate().start(position, mouse_pos)

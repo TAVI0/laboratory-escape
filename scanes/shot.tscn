@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmqu3m4s3dvie"]
 
 [ext_resource type="Script" uid="uid://dst1sg34x7acv" path="res://scripts/shot.gd" id="1_p0qff"]
-[ext_resource type="Texture2D" uid="uid://b88qjtiuoshnt" path="res://assets/shoot1.png" id="2_q2dyo"]
+[ext_resource type="Texture2D" uid="uid://cp3eqq4cewi3x" path="res://assets/01.png" id="2_p0qff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m0yd"]
 size = Vector2(20, 8)
@@ -9,14 +9,14 @@ size = Vector2(20, 8)
 [node name="Shot" type="Area2D" groups=["shot"]]
 script = ExtResource("1_p0qff")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p0qff")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7m0yd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 2.38419e-07)
 scale = Vector2(1, 0.4)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_q2dyo")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
