@@ -1,8 +1,9 @@
 extends Node2D
 
+@export var spawn_start = 3.0;
 func _ready() -> void:
 	var timer = Timer.new()
-	timer.wait_time = 5.0
+	timer.wait_time = spawn_start
 	timer.one_shot = false
 	timer.timeout.connect(spawn_enemy)
 	add_child(timer)
