@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://btx4xs3bxkl0r"]
+[gd_scene load_steps=4 format=3 uid="uid://btx4xs3bxkl0r"]
 
 [ext_resource type="Script" uid="uid://bcmri3vwl85gx" path="res://scripts/player.gd" id="1_6qdiq"]
 [ext_resource type="Texture2D" uid="uid://cs2ybqkbqgk3e" path="res://assets/icon.svg" id="1_kb0sa"]
-[ext_resource type="PackedScene" uid="uid://cmqu3m4s3dvie" path="res://scanes/shot.tscn" id="2_4lihl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qdiq"]
 size = Vector2(124, 128)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_6qdiq")
-shot = ExtResource("2_4lihl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6qdiq")
@@ -20,3 +18,4 @@ texture = ExtResource("1_kb0sa")
 [node name="Settings" type="Node2D" parent="."]
 
 [node name="ShootSpawn" type="Marker2D" parent="Settings"]
+position = Vector2(1, -94)

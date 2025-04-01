@@ -17,7 +17,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("shot"):
 		area.queue_free()
-		_get_damage(1)
+		_get_damage(area.damage)
 		
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -25,13 +25,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _get_damage(damage: int)->void:
 	healt -= damage
+	if healt<=0:
+		queue_free()
 	blink = true
 	animation_blink()  # Inicia el parpadeo
 	await get_tree().create_timer(0.3).timeout  # Espera el tiempo de invulnerabilidad
 	blink = false
-	if healt<=0:
-		queue_free()
-
+	
 func animation_blink():
 	while blink:
 		$AnimatedSprite2D.visible = false  # Oculta el spriteS
