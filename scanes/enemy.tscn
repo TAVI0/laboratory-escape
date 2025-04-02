@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://x4jrk58cp0p"]
+[gd_scene load_steps=10 format=3 uid="uid://x4jrk58cp0p"]
 
 [ext_resource type="Script" uid="uid://bi6ca2rr00ewn" path="res://scripts/enemy.gd" id="1_booey"]
 [ext_resource type="Texture2D" uid="uid://cs2ybqkbqgk3e" path="res://assets/icon.svg" id="2_lpiqh"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b2pdxvfwc5awl" path="res://assets/slime-walk/slime-move-1.png" id="4_ghnru"]
 [ext_resource type="Texture2D" uid="uid://b2pwc7o4nqkvy" path="res://assets/slime-walk/slime-move-2.png" id="5_r7jrm"]
 [ext_resource type="Texture2D" uid="uid://bprnao013g0b3" path="res://assets/slime-walk/slime-move-3.png" id="6_fdsbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3augs"]
+size = Vector2(157, 82)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r7jrm"]
 animations = [{
@@ -27,11 +30,16 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3augs"]
-size = Vector2(121, 60)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5ys"]
+size = Vector2(27, 48)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_booey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 33)
+scale = Vector2(0.728061, 0.569185)
+shape = SubResource("RectangleShape2D_3augs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -51,5 +59,17 @@ visible = false
 position = Vector2(1.5, 33)
 shape = SubResource("RectangleShape2D_3augs")
 
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(-58, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(3.5, 14)
+shape = SubResource("RectangleShape2D_nd5ys")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
