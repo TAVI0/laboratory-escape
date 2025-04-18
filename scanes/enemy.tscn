@@ -1,17 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://x4jrk58cp0p"]
+[gd_scene load_steps=15 format=3 uid="uid://x4jrk58cp0p"]
 
 [ext_resource type="Script" uid="uid://bi6ca2rr00ewn" path="res://scripts/enemy.gd" id="1_booey"]
 [ext_resource type="Texture2D" uid="uid://cs2ybqkbqgk3e" path="res://assets/icon.svg" id="2_lpiqh"]
+[ext_resource type="Texture2D" uid="uid://cv3apnu4pyey1" path="res://assets/slime-attack/slime-attack-0.png" id="3_8apw8"]
 [ext_resource type="Texture2D" uid="uid://2uq21fkwjk2t" path="res://assets/slime-walk/slime-move-0.png" id="3_nd5ys"]
 [ext_resource type="Texture2D" uid="uid://b2pdxvfwc5awl" path="res://assets/slime-walk/slime-move-1.png" id="4_ghnru"]
+[ext_resource type="Texture2D" uid="uid://b7ddvhl4ecwgo" path="res://assets/slime-attack/slime-attack-1.png" id="4_pbnfg"]
 [ext_resource type="Texture2D" uid="uid://b2pwc7o4nqkvy" path="res://assets/slime-walk/slime-move-2.png" id="5_r7jrm"]
+[ext_resource type="Texture2D" uid="uid://tciwk3xo5ety" path="res://assets/slime-attack/slime-attack-2.png" id="5_wdfc1"]
+[ext_resource type="Texture2D" uid="uid://dj5wq05nrvcdd" path="res://assets/slime-attack/slime-attack-3.png" id="6_cji6i"]
 [ext_resource type="Texture2D" uid="uid://bprnao013g0b3" path="res://assets/slime-walk/slime-move-3.png" id="6_fdsbp"]
+[ext_resource type="Texture2D" uid="uid://b8nvbjasjx0m8" path="res://assets/slime-attack/slime-attack-4.png" id="7_c3k4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3augs"]
 size = Vector2(157, 82)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r7jrm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8apw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pbnfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wdfc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cji6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c3k4n")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_nd5ys")
@@ -33,7 +58,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5ys"]
 size = Vector2(27, 48)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_booey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,8 +74,9 @@ texture = ExtResource("2_lpiqh")
 texture_filter = 1
 scale = Vector2(5.27161, 5.27161)
 sprite_frames = SubResource("SpriteFrames_r7jrm")
-animation = &"walk"
-frame_progress = 0.0123116
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

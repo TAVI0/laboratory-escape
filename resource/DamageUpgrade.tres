@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="damageUpgrade" load_steps=3 format=3 uid="uid://bnc4v0d1xki0f"]
+
+[ext_resource type="Script" uid="uid://djpeny0j5yft" path="res://scripts/upgrades/damageUpgrade.gd" id="1_bo6r6"]
+[ext_resource type="Texture2D" uid="uid://d3rrkdc4pp43q" path="res://assets/Mario-mushroom.png" id="2_fweb0"]
+
+[resource]
+script = ExtResource("1_bo6r6")
+shot_damage = 2.0
+texture = ExtResource("2_fweb0")
+name = "damage up"

@@ -10,7 +10,9 @@ func _ready() -> void:
 	timer.start()
 
 func spawn_enemy():
-	var enemy_instance = preload("res://scanes/enemy.tscn").instantiate()
-	enemy_instance.scale = Vector2(0.5, 0.5)
-	enemy_instance.global_position = global_position
-	get_parent().add_child(enemy_instance)
+	if GLOBAL.enemy_to_spawn>0:
+		var enemy_instance = preload("res://scanes/enemy.tscn").instantiate()
+		enemy_instance.scale = Vector2(0.5, 0.5)
+		enemy_instance.global_position = global_position
+		get_parent().add_child(enemy_instance)
+		GLOBAL.enemy_to_spawn-=1
